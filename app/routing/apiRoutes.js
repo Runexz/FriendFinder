@@ -12,6 +12,8 @@ module.exports = function (app) {
 
     //api POST requests, when user submits a form with data to the server as a JSON object it is saved to friends array
     app.post("/api/friends", function (req, res) {
+        
+        // Function stuff here
 
         friends.push(req.body);
     });
