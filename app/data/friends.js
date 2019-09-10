@@ -1,5 +1,6 @@
 // friends.js file
 
+
 //DATA
 //initial entry dummy friend, will hold all friends in JSON
 var friends = [
@@ -20,3 +21,5 @@ var friends = [
         ]
     }
 ];
+
+module.exports = friends
