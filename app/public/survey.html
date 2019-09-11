@@ -222,6 +222,7 @@
             //prevent date from being erased before it is saved
             event.preventDefault();
             
+            //user name, link, and selected number are saved into this variable just like in friends.js
             var newFriends = {
                 newName: $("#userName").val().trim(),
                 newImg: $("#linkToPhoto").val().trim(),
@@ -237,7 +238,8 @@
                     $("#question9").val(),
                     $("#question10").val(),
                 ]
-            }
+            };
+
         })
 
     </script>
