@@ -24,7 +24,9 @@ module.exports = function (app) {
         //create variables to link to server api
         var newFriends = req.body;
         var newName = req.body.newName;
+        console.log(newName);
         var newPhoto = req.body.newPhoto;
+        console.log(newPhoto);
         var newScores = req.body.scores;
         var startDif = 0;
 
