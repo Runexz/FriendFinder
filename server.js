@@ -3,6 +3,8 @@
 //NPM express package
 var express = require("express");
 
+var path = require("path");
+
 // node is notified that an "express" server is created
 var app = express();
 
