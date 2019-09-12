@@ -217,60 +217,64 @@
         crossorigin="anonymous"></script>
 
     <script type="text/javascript">
+        $(document).ready(function () {
 
-        $(".submit").on("click", function (event) {
-            //prevent date from being erased before it is saved
-            event.preventDefault();
+            $(".submit").on("click", function (event) {
+                //prevent date from being erased before it is saved
+                event.preventDefault();
 
-            //user name, link, and selected number are saved into this variable just like in friends.js
-            var newFriends = {
-                newName: $("#userName").val().trim(),
-                newPhoto: $("#linkToPhoto").val().trim(),
-                scores: [
-                    $("#question1").val(),
-                    $("#question2").val(),
-                    $("#question3").val(),
-                    $("#question4").val(),
-                    $("#question5").val(),
-                    $("#question6").val(),
-                    $("#question7").val(),
-                    $("#question8").val(),
-                    $("#question9").val(),
-                    $("#question10").val(),
-                ]
-            };
+                //user name, link, and selected number are saved into this variable just like in friends.js
+                var newFriends = {
+                    newName: $("#userName").val().trim(),
+                    newPhoto: $("#linkToPhoto").val().trim(),
+                    scores: [
+                        $("#question1").val(),
+                        $("#question2").val(),
+                        $("#question3").val(),
+                        $("#question4").val(),
+                        $("#question5").val(),
+                        $("#question6").val(),
+                        $("#question7").val(),
+                        $("#question8").val(),
+                        $("#question9").val(),
+                        $("#question10").val(),
+                    ]
+                };
 
-            $.post("/api/friends", newFriends, function (data) {
+                //post function to run when submit button is clicked
+                $.post("/api/friends", newFriends, function (data) {
 
-                if (data) {
-                    $("#bestName").text(data.name);
-                    $("#bestPhoto").attr("src", data.photo).addClass("img-fluid");
+                    //will insert best match name and image
+                    if (data) {
+                        $("#bestName").text(data.name);
+                        $("#bestPhoto").attr("src", data.photo).addClass("img-fluid");
+                        //shows modal
+                        $("#startModal").modal("toggle");
 
-                    $("#startModal").modal("toggle");
-                    //the else statement will show me if there is a problem
-                } else {
-                    alert("Sorry a problem exists with the server!")
-                }
+                        //the else statement will show me if there is a problem
+                    } else {
+                        alert("Sorry a problem exists with the server!")
+                    }
 
-                //after submit is pushed clear the values
-                $("#userName").val("");
-                $("#linkToPhoto").val("");
-                $("#question1").val("");
-                $("#question2").val("");
-                $("#question3").val("");
-                $("#question4").val("");
-                $("#question5").val("");
-                $("#question6").val("");
-                $("#question7").val("");
-                $("#question8").val("");
-                $("#question9").val("");
-                $("#question10").val("");
+                    //after submit is pushed clear the values
+                    $("#userName").val("");
+                    $("#linkToPhoto").val("");
+                    $("#question1").val("");
+                    $("#question2").val("");
+                    $("#question3").val("");
+                    $("#question4").val("");
+                    $("#question5").val("");
+                    $("#question6").val("");
+                    $("#question7").val("");
+                    $("#question8").val("");
+                    $("#question9").val("");
+                    $("#question10").val("");
 
+
+                });
 
             });
-
         });
-
     </script>
 
 </body>
