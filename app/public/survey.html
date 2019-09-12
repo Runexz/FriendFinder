@@ -185,23 +185,24 @@
         </footer>
 
         <div class="modal" id="startModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title">Here is your Friend Match!</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                        <h5 class="modal-title">Here is your Friend Match!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
-                      <p>Modal body text goes here.</p>
+                        <h4>Your new friend's name is : <span id="bestName"></span></h4>
+                        <img id="bestPhoto">
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
+        </div>
 
     </div>
 
@@ -217,15 +218,15 @@
         crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-    
-        $(".submit").on("click", function(event) {
+
+        $(".submit").on("click", function (event) {
             //prevent date from being erased before it is saved
             event.preventDefault();
-            
+
             //user name, link, and selected number are saved into this variable just like in friends.js
             var newFriends = {
                 newName: $("#userName").val().trim(),
-                newImg: $("#linkToPhoto").val().trim(),
+                newPhoto: $("#linkToPhoto").val().trim(),
                 scores: [
                     $("#question1").val(),
                     $("#question2").val(),
@@ -240,7 +241,36 @@
                 ]
             };
 
-        })
+            $.post("/api/friends", newFriends, function (data) {
+
+                if (data) {
+                    $("#bestName").text(data.name);
+                    $("#bestPhoto").attr("src", data.photo).addClass("img-fluid");
+
+                    $("#startModal").modal("toggle");
+                    //the else statement will show me if there is a problem
+                } else {
+                    alert("Sorry a problem exists with the server!")
+                }
+
+                //after submit is pushed clear the values
+                $("#userName").val("");
+                $("#linkToPhoto").val("");
+                $("#question1").val("");
+                $("#question2").val("");
+                $("#question3").val("");
+                $("#question4").val("");
+                $("#question5").val("");
+                $("#question6").val("");
+                $("#question7").val("");
+                $("#question8").val("");
+                $("#question9").val("");
+                $("#question10").val("");
+
+
+            });
+
+        });
 
     </script>
 
