@@ -17,14 +17,14 @@ module.exports = function (app) {
         // create variable that will fill in with best match
         var topMatch = {
             name: "",
-            img: "",
+            photo: "",
             difference: 20
         };
 
         //create variables to link to server api
         var newFriends = req.body;
         var newName = req.body.newName;
-        var newImg = req.body.newImg;
+        var newPhoto = req.body.newPhoto;
         var newScores = req.body.scores;
         var startDif = 0;
 
@@ -41,11 +41,16 @@ module.exports = function (app) {
                 //math.abs is the absolute difference between friend and new friend and adds to startDif
                 startDif += Math.abs(totalFriends2 - newScores[j]);
 
-                
-                
+                if (startDif < topMatch.difference) {
+                    topMatch.name = totalFriends.name;
+                    topMatch.photo = totalFriends.photo;
+                    topMatch.difference = startDif;
+                }
+
             }
         }
 
-        friends.push(req.body);
+        friends.push(newFriends);
+        res.json(topMatch);
     });
 }
