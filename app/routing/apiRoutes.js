@@ -47,10 +47,9 @@ module.exports = function (app) {
                     topMatch.name = totalFriends.name;
                     topMatch.photo = totalFriends.photo;
                     topMatch.difference = startDif;
-                }
-
-            }
-        }
+                };
+            };
+        };
 
         friends.push(newFriends);
         res.json(topMatch);
