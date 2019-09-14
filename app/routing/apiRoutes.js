@@ -46,6 +46,7 @@ module.exports = function (app) {
 
                 if (startDif <= topMatch.difference) {
                     topMatch.name = totalFriends.name;
+                    //missing newfriend
                     topMatch.photo = totalFriends.photo;
                     topMatch.difference = startDif;
                 };
