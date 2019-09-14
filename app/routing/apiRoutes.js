@@ -18,7 +18,7 @@ module.exports = function (app) {
         var topMatch = {
             name: "",
             photo: "",
-            difference: 20
+            difference: 51
         };
 
         //create variables to link to server api
@@ -29,31 +29,35 @@ module.exports = function (app) {
         console.log(newPhoto);
         var newScores = req.body.scores.map(num => parseInt(num));
         newFriends.scores = newScores;
-        var startDif = 0;
+
 
 
         //for loop needed to loop through all the friends
         for (var i = 0; i < friends.length; i++) {
             var totalFriends = friends[i];
-            startDif = 0;
+            var startDif = 0;
 
-            // second loop needed to compare new friend score to the friend data
+            // second loop needed to go through all scores of friends
             for (var j = 0; j < totalFriends.scores.length; j++) {
                 var totalFriends2 = totalFriends.scores[j];
 
                 //math.abs is the absolute difference between friend and new friend and adds to startDif
                 startDif += Math.abs(totalFriends2 - newScores[j]);
-
-                if (startDif < topMatch.difference) {
-                    topMatch.name = totalFriends.name;
-                    //missing newfriend
-                    topMatch.photo = totalFriends.photo;
-                    topMatch.difference = startDif;
-                };
             };
+            //this will check the difference between each score loop to find the best possible match
+            if (startDif < topMatch.difference) {
+                topMatch.name = totalFriends.name;
+                topMatch.photo = totalFriends.photo;
+                topMatch.difference = startDif;
+            };
+            //will show each friend and show the difference
+            console.log(totalFriends);
+            console.log(startDif);
+
         };
-        
+
         friends.push(newFriends);
+        console.log(topMatch)
         res.json(topMatch);
     });
 }
