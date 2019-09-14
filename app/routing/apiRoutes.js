@@ -27,7 +27,8 @@ module.exports = function (app) {
         console.log(newName);
         var newPhoto = req.body.newPhoto;
         console.log(newPhoto);
-        var newScores = req.body.scores;
+        var newScores = req.body.scores.map(num => parseInt(num));
+        newFriends.scores = newScores;
         var startDif = 0;
 
 
@@ -41,16 +42,16 @@ module.exports = function (app) {
                 var totalFriends2 = totalFriends.scores[j];
 
                 //math.abs is the absolute difference between friend and new friend and adds to startDif
-                startDif += Math.abs(totalFriends2 - newScores[j]);
+                startDif += Math.abs(parseInt(totalFriends2) - parseInt(newScores[j]));
 
-                if (startDif < topMatch.difference) {
+                if (startDif <= topMatch.difference) {
                     topMatch.name = totalFriends.name;
                     topMatch.photo = totalFriends.photo;
                     topMatch.difference = startDif;
                 };
             };
         };
-
+        
         friends.push(newFriends);
         res.json(topMatch);
     });
