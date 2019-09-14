@@ -42,7 +42,7 @@ module.exports = function (app) {
                 var totalFriends2 = totalFriends.scores[j];
 
                 //math.abs is the absolute difference between friend and new friend and adds to startDif
-                startDif += Math.abs(parseInt(totalFriends2) - parseInt(newScores[j]));
+                startDif += Math.abs(totalFriends2 - newScores[j]);
 
                 if (startDif < topMatch.difference) {
                     topMatch.name = totalFriends.name;
