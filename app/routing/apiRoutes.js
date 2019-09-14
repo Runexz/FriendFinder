@@ -23,9 +23,9 @@ module.exports = function (app) {
 
         //create variables to link to server api
         var newFriends = req.body;
-        var newName = req.body.newName;
+        var newName = req.body.name;
         console.log(newName);
-        var newPhoto = req.body.newPhoto;
+        var newPhoto = req.body.photo;
         console.log(newPhoto);
         var newScores = req.body.scores.map(num => parseInt(num));
         newFriends.scores = newScores;
@@ -44,7 +44,7 @@ module.exports = function (app) {
                 //math.abs is the absolute difference between friend and new friend and adds to startDif
                 startDif += Math.abs(parseInt(totalFriends2) - parseInt(newScores[j]));
 
-                if (startDif <= topMatch.difference) {
+                if (startDif < topMatch.difference) {
                     topMatch.name = totalFriends.name;
                     //missing newfriend
                     topMatch.photo = totalFriends.photo;
