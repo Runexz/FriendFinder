@@ -3,7 +3,7 @@
 ### What is FriendFinder?
 FriendFinder is a full-stack application that will ask the user questions, then compare their answers with those from other users. 
 
-_Example of FriendFinder_
+**_Example of FriendFinder_**
 
 ![Example of FriendFinder](/images/ffindex.png)
 
@@ -20,7 +20,7 @@ When the user clicks **Go to Survey** button on the main page it will send the u
 It will ask the user to enter thier _Name and Link to thier photo_.
 Once that is entered the application will make 10 statements that the user will choose a number 1-5.  With 1 being they strongly disagree with the statement and 5 being they strongly agree with the statement.
 
-_Example of Survey_
+**_Example of Survey_**
 
 ![Example of Survey page](/images/ffsurvey.png)
 
@@ -28,6 +28,14 @@ _Example of Survey_
 Heroku is used to host the application.  At the bottom of the main page and survey page there is an **API Friends List** button.
 Once the button is clicked it will display a JSON of all possible friends that have taken the survey.
 
-_Example of JSON_
+**_Example of JSON_**
 
 ![Example of JSON return](/images/ffapi.png)
+
+## This is the Friend you have been searching for!
+After all surveys have been answered and the user clicks the submit button, the application will calculate the differences of the user input to other friends that have answered the same questions. A screen will appear showing 
+the name and photo of the friend that had the least amount of difference from the user.
+
+**_Example of Friend Match_**
+
+![Example of Friend Match image](/images/ffresult.png)
