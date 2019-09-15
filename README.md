@@ -20,4 +20,11 @@ It will ask the user to enter thier _Name and Link to thier photo_.
 Once that is entered the application will make 10 statements that the user will choose a number 1-5.  With 1 being they strongly disagree with the statement and 5 being they strongly agree with the statement.
 
 _Example of Survey_
-![Example of Survey page](/images//ffsurvey.png)
+![Example of Survey page](/images/ffsurvey.png)
+
+## API
+Heroku is used to host the application.  At the bottom of the main page and survey page there is an **API Friends List** button.
+Once the button is clicked it will display a JSON of all possible friends that have taken the survey.
+
+_Example of JSON_
+![Example of JSON return](/images/ffapi.png)
