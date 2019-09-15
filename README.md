@@ -3,7 +3,7 @@
 ### What is FriendFinder?
 FriendFinder is a full-stack application that will ask the user questions, then compare their answers with those from other users. 
 
-![Example of FriendFinder](https://github.com/Runexz/FriendFinder/blob/master/images/ffindex.png)
+![Example of FriendFinder](/images/ffindex.png)
 
 ### NPM who?
 What does NPM stand for?
